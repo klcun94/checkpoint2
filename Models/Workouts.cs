@@ -17,6 +17,7 @@ namespace capstone.Models
         public int Sets { get; set; }
         public int Reps { get; set; }
         public int Weight { get; set; }
+        public string UserId { get; set; }
         public ApplicationUser User { get; set; }
     }
 }

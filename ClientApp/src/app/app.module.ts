@@ -14,6 +14,7 @@ import { ApiAuthorizationModule } from 'src/api-authorization/api-authorization.
 import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
 import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
 import { TeacherComponent } from './teacher/teacher.component';
+import { WorkoutComponent } from './workout/workout.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { TeacherComponent } from './teacher/teacher.component';
     CounterComponent,
     FetchDataComponent,
     StudentsComponent,
-    TeacherComponent
+    TeacherComponent,
+    WorkoutComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -31,6 +33,7 @@ import { TeacherComponent } from './teacher/teacher.component';
     FormsModule,
     ApiAuthorizationModule,
     RouterModule.forRoot([
+      { path: 'routines', component: WorkoutComponent, canActivate: [AuthorizeGuard] },
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
         { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },

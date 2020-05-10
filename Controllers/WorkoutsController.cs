@@ -25,15 +25,16 @@ namespace capstone.Controllers
         {
             var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
             Workouts[] workouts = null;
-            _context.Workouts.Where(w => w.User.Id == userId).ToArray();
+            workouts = _context.Workouts.Where(w => w.UserId == userId).ToArray();
             return workouts;
         }
         [HttpPost]
-        public Workouts Post([FromBody]Workouts workouts)
+        public Workouts Post([FromBody]Workouts workout)
         {
-            _context.Workouts.Add(workouts);
+            workout.UserId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            _context.Workouts.Add(workout);
             _context.SaveChanges();
-            return workouts;
+            return workout;
         }
     }
 }
