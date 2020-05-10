@@ -12,13 +12,11 @@ namespace capstone.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         public int Id { get; set; }
-        public DateTime Date { get; set; }
-        //public string Date { get; set; }
+        public string Date { get; set; }
         public string Workout { get; set; }
         public int Sets { get; set; }
         public int Reps { get; set; }
         public int Weight { get; set; }
-        //public Guid UserId { get; set; }
-        //public ApplicationUser User { get; set; }
+        public ApplicationUser User { get; set; }
     }
 }
